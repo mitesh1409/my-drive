@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/mitesh1409/my-drive/issues"
   },
-  "homepage": "https://github.com/mitesh1409/my-drive#readme"
+  "homepage": "https://github.com/mitesh1409/my-drive#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
 }
