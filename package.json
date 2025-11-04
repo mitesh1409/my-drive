@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/mitesh1409/my-drive#readme",
   "devDependencies": {
+    "jest": "^30.2.0",
     "nodemon": "^3.1.10"
   }
 }
