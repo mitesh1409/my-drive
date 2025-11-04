@@ -1,5 +1,5 @@
 function homeController(req, res) {
-    res.render('static/home');
+    res.render('home');
 }
 
 export {
