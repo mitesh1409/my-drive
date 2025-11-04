@@ -1,0 +1,23 @@
+{
+  "name": "my-drive",
+  "version": "1.0.0",
+  "description": "Personal drive application",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mitesh1409/my-drive.git"
+  },
+  "keywords": [
+    "drive",
+    "application"
+  ],
+  "author": "Mitesh Prajapati",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mitesh1409/my-drive/issues"
+  },
+  "homepage": "https://github.com/mitesh1409/my-drive#readme"
+}
