@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Personal drive application",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "test": "jest"
   },
