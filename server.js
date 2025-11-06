@@ -4,6 +4,7 @@ import { homeController } from './controllers/home.controller.js';
 import { signupController } from './controllers/signup.controller.js';
 import { signinController } from './controllers/signin.controller.js';
 import { userRouter } from './routes/user.router.js';
+import { requestLogger } from './middlewares/requestLogger.js';
 
 const PORT = 3000;
 const HOSTNAME = '127.0.0.1';
@@ -13,6 +14,8 @@ const app = express();
 app.set('view engine', 'ejs');
 
 // Set common middlewares.
+// Logs request data.
+app.use(requestLogger);
 // Serves static assets such as HTML files, images, and so on from the public directory.
 app.use(express.static('public'));
 // Parses incoming requests with JSON payloads.
