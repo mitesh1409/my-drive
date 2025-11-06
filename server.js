@@ -5,11 +5,14 @@ import { signupController } from './controllers/signup.controller.js';
 import { signinController } from './controllers/signin.controller.js';
 import { userRouter } from './routes/user.router.js';
 import { requestLogger } from './middlewares/requestLogger.js';
+import { connectDB } from './config/db.js';
 
 const PORT = 3000;
 const HOSTNAME = '127.0.0.1';
 
 const app = express();
+
+connectDB();
 
 app.set('view engine', 'ejs');
 
