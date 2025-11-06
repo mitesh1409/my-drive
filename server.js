@@ -1,4 +1,5 @@
 import express from 'express';
+import 'dotenv/config'; // Loads environment variables from .env file.
 
 import { homeController } from './controllers/home.controller.js';
 import { signupController } from './controllers/signup.controller.js';
