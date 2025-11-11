@@ -6,20 +6,14 @@ const userSchema = new mongoose.Schema({
         trim: true,
         lowercase: true,
         required: true,
-        minLength: {
-            value: 3,
-            message: 'First name must be at least 3 characters long'
-        }
+        minLength: [3, 'First name must be at least 3 characters long']
     },
     lastName: {
         type: String,
         trim: true,
         lowercase: true,
         required: true,
-        minLength: {
-            value: 3,
-            message: 'Last name must be at least 3 characters long'
-        }
+        minLength: [3, 'Last name must be at least 3 characters long']
     },
     email: {
         type: String,
@@ -32,15 +26,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         trim: true,
         lowercase: true,
-        required: true,
-        minLength: {
-            value: 8,
-            message: 'Password must be minimum 8 characters long'
-        },
-        maxLength: {
-            value: 20,
-            message: 'Password must be maximum 20 characters long'
-        }
+        required: true
     },
 });
 
