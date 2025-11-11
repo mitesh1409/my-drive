@@ -20,12 +20,25 @@ async function create(req, res) {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    await User.create({
-        firstName,
-        lastName,
-        email,
-        password: hashedPassword
-    });
+    try {
+        await User.create({
+            firstName,
+            lastName,
+            email,
+            password: hashedPassword
+        });
+    } catch (error) {
+        console.log('Error', error.message);
+
+        res
+            .status(500)
+            .json({
+                status: 'Internal Server Error',
+                message: 'Failed to create user'
+            });
+
+        return;
+    }
 
     res
         .status(201)
