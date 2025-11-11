@@ -1,12 +1,21 @@
+import { validationResult } from 'express-validator';
 import { User } from '../models/user.model.js';
 
 async function create(req, res) {
-    console.log('Called POST /users');
-    console.log('Request', req.body);
+    // Check request validation results.
+    const validationResults = validationResult(req);
+    if (!validationResults.isEmpty()) {
+        res
+            .status(400)
+            .json({
+                status: 'Bad Request',
+                message: 'Failed to create user',
+                errors: validationResults.array()
+            });
+        return;
+    }
 
     const { firstName, lastName, email, password } = req.body;
-
-    console.log(firstName, lastName, email, password);
 
     await User.create({
         firstName,
