@@ -24,7 +24,12 @@ async function create(req, res) {
         password
     });
 
-    res.send('User created successfully!');
+    res
+        .status(201)
+        .json({
+            status: 'Created',
+            message: 'User created successfully!'
+        });
 }
 
 export {
