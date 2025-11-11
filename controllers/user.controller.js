@@ -18,9 +18,6 @@ async function create(req, res) {
 
     const { firstName, lastName, email, password } = req.body;
 
-    console.log('Validations passed');
-    console.log(firstName, lastName, email, password);
-
     const hashedPassword = await bcrypt.hash(password, 10);
 
     await User.create({
