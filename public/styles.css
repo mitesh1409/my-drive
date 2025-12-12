@@ -635,6 +635,9 @@
   .block {
     display: block;
   }
+  .flex {
+    display: flex;
+  }
   .grid {
     display: grid;
   }
@@ -666,6 +669,12 @@
   .flex-none {
     flex: none;
   }
+  .list-inside {
+    list-style-position: inside;
+  }
+  .list-disc {
+    list-style-type: disc;
+  }
   .footer-horizontal {
     @layer daisyui.l1.l2 {
       grid-auto-flow: column;
@@ -676,6 +685,9 @@
   }
   .grid-flow-col {
     grid-auto-flow: column;
+  }
+  .justify-center {
+    justify-content: center;
   }
   .gap-4 {
     gap: calc(var(--spacing) * 4);
@@ -738,8 +750,8 @@
   .py-6 {
     padding-block: calc(var(--spacing) * 6);
   }
-  .pb-10 {
-    padding-bottom: calc(var(--spacing) * 10);
+  .py-10 {
+    padding-block: calc(var(--spacing) * 10);
   }
   .text-center {
     text-align: center;

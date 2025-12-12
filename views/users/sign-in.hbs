@@ -1,10 +1,18 @@
-<section class="m-15">
+<section class="flex justify-center py-10">
     <div class="p-10 w-md border border-gray-300 rounded-sm">
         <h1 class="mb-5 text-xl">Sign In</h1>
 
         <div>
             {{#if error}}
                 <p class="my-3 text-red-600">{{error}}</p>
+            {{/if}}
+
+            {{#if errors}}
+                <ul class="my-3 text-red-600 list-disc list-inside">
+                    {{#each errors}}
+                        <li>{{this.msg}}</li>
+                    {{/each}}
+                </ul>
             {{/if}}
 
             <form action="/users/sign-in" method="POST">

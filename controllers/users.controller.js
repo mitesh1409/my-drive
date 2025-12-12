@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt';
 import User from "../models/user.model.js";
 import * as AuthTokens from "../services/authTokens.js";
 import mongoose from 'mongoose';
+import { validationResult } from 'express-validator';
 
 function signUp(req, res) {
     if (req.authUser) {
@@ -19,6 +20,17 @@ async function doSignUp(req, res) {
         return res.redirect('/users/dashboard');
     }
 
+    const validationErrors = validationResult(req);
+    if (!validationErrors.isEmpty()) {
+        return res
+            .status(400)
+            .render('users/sign-up', {
+                metaTitle: 'My Drive | Sign Up',
+                status: 'failure',
+                errors: validationErrors.array()
+            });
+    }
+
     const {
         firstName,
         lastName,
@@ -27,16 +39,6 @@ async function doSignUp(req, res) {
         email,
         password
     } = req.body;
-
-    if (!firstName || !lastName || !gender || !dob || !email || !password) {
-        return res
-            .status(400)
-            .render('users/sign-up', {
-                metaTitle: 'My Drive | Sign Up',
-                status: 'failure',
-                error: 'All fields are required.'
-            });
-    }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -85,16 +87,18 @@ async function doSignIn(req, res) {
         return res.redirect('/users/dashboard');
     }
 
-    const { email, password } = req.body;
-
-    if (!email || !password) {
+    const validationErrors = validationResult(req);
+    if (!validationErrors.isEmpty()) {
         return res
             .status(400)
             .render('users/sign-in', {
                 metaTitle: 'My Drive | Sign In',
-                error: 'Email and Password are required'
+                status: 'failure',
+                errors: validationErrors.array()
             });
     }
+
+    const { email, password } = req.body;
 
     const user = await User.findOne({ email: email }).exec();
 
