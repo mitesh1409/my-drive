@@ -136,7 +136,7 @@ async function doSignIn(req, res) {
 
     // Set cookie with authToken generated above.
     // In the subsequent requests client will send this authToken back to the server via cookie.
-    // This is process implicit from client's end.
+    // This process is implicit from client's end.
     res.cookie('authToken', authToken, { httpOnly: true });
 
     return res.redirect('/users/dashboard');
