@@ -159,7 +159,7 @@ function signOut(req, res) {
         return res.redirect('/users/sign-in');
     }
 
-    // Remove the cookie as well.
+    // Remove the cookie which contains authentication token.
     res.clearCookie('authToken');
 
     // Redirect to sign in page.
