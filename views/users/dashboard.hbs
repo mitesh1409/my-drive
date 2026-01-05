@@ -3,6 +3,18 @@
     <h2 class="mb-5">Welcome {{userFullName}}</h2>
 
     <div>
+        <form action="document/upload" method="POST" enctype="multipart/form-data">
+            <div>
+                <input type="file" class="file-input" name="document" />
+            </div>
+
+            <div>
+                <button type="submit" class="w-full py-3 px-6 text-white bg-indigo-500 border border-indigo-700 rounded-sm">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <div>
         <a href="/users/sign-out" class="w-full py-3 px-6 text-white bg-indigo-500 border border-indigo-700 rounded-sm">Sign Out</a>
     </div>
 </section>
