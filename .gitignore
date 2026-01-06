@@ -137,3 +137,6 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Firebase Private Key
+my-drive-735c7-firebase-adminsdk-fbsvc-608ba53203.json
