@@ -1,12 +1,37 @@
-function upload(req, res) {
+import File from "../models/file.model.js";
+
+async function upload(req, res) {
     if (!req.authUser) {
         return res.redirect('/users/sign-in');
     }
 
-    // const authUser = req.authUser;
+    try {
+        await File.create({
+            path: req.file.path,
+            originalName: req.file.originalname,
+            user: req.authUser._id,
+        });
+    } catch (error) {
+        console.error('Error during saving file upload record:', error);
 
-    console.log('Document uploaded');
-    res.send(req.file);
+        return res
+            .status(500)
+            .render('users/dashboard', {
+                metaTitle: 'My Drive | Dashboard',
+                userFullName: `${authUser.firstName} ${authUser.lastName}`,
+                status: 'failure',
+                error: 'Something went wrong. Please try again.'
+            });
+    }
+
+    return res
+        .status(201)
+        .render('users/dashboard', {
+            metaTitle: 'My Drive | Dashboard',
+            userFullName: `${authUser.firstName} ${authUser.lastName}`,
+            status: 'success',
+            error: 'File uploaded successfully.'
+        });
 }
 
 export {
