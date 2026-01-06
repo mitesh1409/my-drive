@@ -8,6 +8,7 @@ import connectDB from './database/connectDB.js';
 import homeController from './controllers/home.controller.js';
 import usersRouter from './routes/users.router.js';
 import requestLogger from './middlewares/requestLogger.js';
+import documentsRouter from './routes/documents.router.js';
 
 const app = express();
 dotenv.config();
@@ -29,6 +30,7 @@ const PORT = process.env.PORT || 3000;
 
 app.get('/', homeController);
 app.use('/users', usersRouter);
+app.use('/documents', documentsRouter);
 
 app.listen(PORT, HOST, () => {
     console.log(`Server up and running at http://${HOST}:${PORT}`);
