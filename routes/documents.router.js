@@ -10,7 +10,7 @@ documentsRouter.post(
     '/upload',
     authenticate,
     upload.single('document'),
-    async DocumentsController.upload
+    DocumentsController.upload
 );
 
 export default documentsRouter;
