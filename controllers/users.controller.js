@@ -4,6 +4,7 @@ import User from "../models/user.model.js";
 import * as AuthTokens from "../services/authTokens.js";
 import mongoose from 'mongoose';
 import { validationResult } from 'express-validator';
+import File from '../models/file.model.js';
 
 function signUp(req, res) {
     if (req.authUser) {
@@ -142,15 +143,22 @@ async function doSignIn(req, res) {
     return res.redirect('/users/dashboard');
 }
 
-function dashboard(req, res) {
+async function dashboard(req, res) {
     if (!req.authUser) {
         return res.redirect('/users/sign-in');
     }
 
     const authUser = req.authUser;
+
+    // Get all the uploaded files for this user.
+    const uploadedFiles = await File.find({
+        userId: authUser._id
+    }).exec();
+
     res.render('users/dashboard', {
         metaTitle: 'My Drive | Dashboard',
-        userFullName: `${authUser.firstName} ${authUser.lastName}`
+        userFullName: `${authUser.firstName} ${authUser.lastName}`,
+        uploadedFiles: uploadedFiles
     });
 }
 

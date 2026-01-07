@@ -24,14 +24,7 @@ async function upload(req, res) {
             });
     }
 
-    return res
-        .status(201)
-        .render('users/dashboard', {
-            metaTitle: 'My Drive | Dashboard',
-            userFullName: `${req.authUser.firstName} ${req.authUser.lastName}`,
-            status: 'success',
-            message: 'File uploaded successfully.'
-        });
+    return res.redirect('/users/dashboard');
 }
 
 export {
