@@ -18,7 +18,7 @@ async function upload(req, res) {
             .status(500)
             .render('users/dashboard', {
                 metaTitle: 'My Drive | Dashboard',
-                userFullName: `${authUser.firstName} ${authUser.lastName}`,
+                userFullName: `${req.authUser.firstName} ${req.authUser.lastName}`,
                 status: 'failure',
                 error: 'Something went wrong. Please try again.'
             });
@@ -28,7 +28,7 @@ async function upload(req, res) {
         .status(201)
         .render('users/dashboard', {
             metaTitle: 'My Drive | Dashboard',
-            userFullName: `${authUser.firstName} ${authUser.lastName}`,
+            userFullName: `${req.authUser.firstName} ${req.authUser.lastName}`,
             status: 'success',
             message: 'File uploaded successfully.'
         });
