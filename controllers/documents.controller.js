@@ -9,7 +9,7 @@ async function upload(req, res) {
         await File.create({
             path: req.file.path,
             originalName: req.file.originalname,
-            user: req.authUser._id,
+            userId: req.authUser._id,
         });
     } catch (error) {
         console.error('Failed to save record for the uploaded file:', error);

@@ -11,7 +11,7 @@ const fileSchema = new mongoose.Schema({
         trim: true,
         required: [ true, 'Original file name is required' ],
     },
-    user: {
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users',
         required: [ true, 'User is required' ],
