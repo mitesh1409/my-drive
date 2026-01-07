@@ -5,7 +5,7 @@ import serviceAccount from "../my-drive-735c7-firebase-adminsdk-fbsvc-608ba53203
 
 const firebase = initializeApp({
   credential: cert(serviceAccount),
-  storageBucket: 'my-drive-735c7.firebasestorage.app',
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET_NAME,
 });
 
 export { firebase };

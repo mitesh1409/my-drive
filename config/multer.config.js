@@ -5,7 +5,7 @@ import serviceAccount from "../my-drive-735c7-firebase-adminsdk-fbsvc-608ba53203
 
 const upload = Multer({
   storage: FirebaseStorage({
-    bucketName: 'my-drive-735c7.firebasestorage.app',
+    bucketName: process.env.FIREBASE_STORAGE_BUCKET_NAME,
     credentials: cert(serviceAccount),
   })
 });

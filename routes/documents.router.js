@@ -13,4 +13,10 @@ documentsRouter.post(
     DocumentsController.upload
 );
 
+documentsRouter.get(
+    '/download/:id',
+    authenticate,
+    DocumentsController.download
+);
+
 export default documentsRouter;

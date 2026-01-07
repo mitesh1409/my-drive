@@ -27,6 +27,39 @@ async function upload(req, res) {
     return res.redirect('/users/dashboard');
 }
 
+async function download(req, res) {
+    console.log('Called download...', req.params.id);
+
+    const authUser = req.authUser;
+    const documentId = req.params.id;
+
+    const document = await File.findOne({
+        _id: documentId,
+        userId: authUser._id
+    }).exec();
+
+    if (!document) {
+        return res
+            .status(401)
+            .json({
+                status: 'Unauthorized',
+                message: 'You are not authorized to access that file'
+            });
+    }
+
+    // WIP
+
+    // const signedUrl = await firebase.storage().bucket().file(path).getSignedUrl({
+    //     action: 'read',
+    //     expires: Date.now() + 1000 * 60 * 60
+    // });
+
+    // console.log('signedUrl', signedUrl);
+
+    // return res.redirect(signedUrl);
+}
+
 export {
-    upload
+    upload,
+    download
 };

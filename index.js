@@ -4,15 +4,15 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 
+const app = express();
+dotenv.config();
+connectDB();
+
 import connectDB from './database/connectDB.js';
 import homeController from './controllers/home.controller.js';
 import usersRouter from './routes/users.router.js';
 import requestLogger from './middlewares/requestLogger.js';
 import documentsRouter from './routes/documents.router.js';
-
-const app = express();
-dotenv.config();
-connectDB();
 
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
