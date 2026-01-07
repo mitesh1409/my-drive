@@ -8,12 +8,12 @@
     </div>
 
     <div class="mb-8">
-        <ul class="list bg-base-100 rounded-box shadow-md">
-            <li class="p-4 pb-2 tracking-wide">Files List</li>
+        <ul class="list">
+            <li class="pb-2 tracking-wide">Files List</li>
 
             {{#each uploadedFiles}}
-            <li class="list-row">
-                <div class="list-col-grow">
+            <li class="list-row bg-gray-100 border-b border-gray-200 mb-5">
+                <div class="cursor-pointer list-col-grow">
                     <div>{{ this.originalName }}</div>
                 </div>
                 <button class="btn btn-square btn-ghost">
