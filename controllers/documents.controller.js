@@ -12,7 +12,7 @@ async function upload(req, res) {
             user: req.authUser._id,
         });
     } catch (error) {
-        console.error('Error during saving file upload record:', error);
+        console.error('Failed to save record for the uploaded file:', error);
 
         return res
             .status(500)
@@ -30,7 +30,7 @@ async function upload(req, res) {
             metaTitle: 'My Drive | Dashboard',
             userFullName: `${authUser.firstName} ${authUser.lastName}`,
             status: 'success',
-            error: 'File uploaded successfully.'
+            message: 'File uploaded successfully.'
         });
 }
 
